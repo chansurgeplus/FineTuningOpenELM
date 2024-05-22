@@ -4,7 +4,7 @@ GPU = "A100"
 GPU_COUNT = 1
 
 app = App()
-image = Image.from_registry("huggingface/transformers-pytorch-gpu").apt_install("git").pip_install("git+https://github.com/huggingface/peft.git",
+image = Image.from_registry("pytorch/pytorch").apt_install("git").pip_install("git+https://github.com/huggingface/peft.git",
                                                                               "accelerate", "datasets", "loralib", "wandb", "python_dotenv").pip_install("bitsandbytes", gpu=GPU)
 
 secret = Secret.from_dict({

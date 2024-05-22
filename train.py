@@ -24,7 +24,7 @@ dataset_name = 'HuggingFaceTB/cosmopedia'
 dataset_subset = "openstax"
 dataset_test_split_ratio = 0.05
 output_dir_tmpl = "/bucket/openelm-cosmopedia-openstax-{timestamp}"
-lora_r = 16,
+lora_r = 16
 lora_alpha = 32
 lora_targets = ["qkv_proj", "out_proj", "proj_1", "proj_2"]
 run_name_tmpl = "openelm-cosmopedia-openstax-{timestamp}"
@@ -89,7 +89,7 @@ def train():
     # Loading the Dataset
     dataset = load_dataset(dataset_name, dataset_subset, split="train")
     split_dataset = dataset.train_test_split(test_size=dataset_test_split_ratio)
-    train_dataset, test_dataset = split_dataset["train"], split_dataset["val"]
+    train_dataset, test_dataset = split_dataset["train"], split_dataset["test"]
     train_dataset = train_dataset.shuffle().map(generate_and_tokenize_prompt, num_proc=16)
     test_dataset = test_dataset.map(generate_and_tokenize_prompt, num_proc=16)
 
