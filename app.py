@@ -1,6 +1,6 @@
 from modal import App, Image, Secret, CloudBucketMount
 
-GPU = "A100"
+GPU = "A10G"
 GPU_COUNT = 1
 
 app = App()
@@ -22,7 +22,8 @@ secret = Secret.from_dict({
             secret=secret,
             bucket_endpoint_url="https://gateway.storjshare.io",
         )
-    }
+    },
+    timeout=86400,
 )
 def run_train():
     from FineTuningOpenELM import train
