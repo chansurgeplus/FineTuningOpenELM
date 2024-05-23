@@ -14,8 +14,9 @@ vol_openelm = Volume.from_name("openelm", create_if_missing=True)
     image=image,
     gpu=f"{GPU}:{GPU_COUNT}",
     volumes={
-        "/root/openelm": vol_openelm
+        "/root/openelm": vol_openelm,
     },
+    _allow_background_volume_commits=True,
     timeout=86400,
 )
 def run_train():
