@@ -23,7 +23,7 @@ max_context_length = 8096
 dataset_name = 'HuggingFaceTB/cosmopedia'
 dataset_subset = "openstax"
 dataset_test_split_ratio = 0.05
-output_dir_tmpl = "/bucket/openelm-cosmopedia-openstax-{timestamp}"
+output_dir_tmpl = "/root/openelm/cosmopedia-openstax-{timestamp}"
 lora_r = 16
 lora_alpha = 32
 lora_targets = ["qkv_proj", "out_proj", "proj_1", "proj_2"]
@@ -102,7 +102,6 @@ def train():
         num_train_epochs=num_epochs,
         learning_rate=lr,
         bf16=True,
-        save_total_limit=4,
         eval_strategy="steps",
         logging_steps=logging_steps,
         eval_steps=eval_steps,
