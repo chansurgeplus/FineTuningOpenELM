@@ -1,4 +1,4 @@
-from modal import App, Image, Secret
+from modal import App, Image, Volume
 import pathlib
 
 GPU = "A10G"
